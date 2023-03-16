@@ -7,41 +7,43 @@
 
 const userChoice = prompt("PARI o DISPARI?")
 const userNumber = parseInt(prompt("Inserisci un numero da 1 a 5"));
-const userResult = oddOrEven(userNumber);
+// const userResult = oddOrEven(userNumber);
 console.log(userChoice, userNumber);
 alert("Hai lanciato un " + userNumber);
 
-const computerChoice = prompt("Ora tocca a me! Premi invio!")
-let computerNumber = Math.floor(Math.random() * 5) + 1;
+const computerNumber = randomNumber();
 alert("Ho lanciato un " + computerNumber);
+
 console.log(computerNumber);
 
-let sum = userNumber + computerNumber;
-console.log(sum);
+gameResult(userNumber, computerNumber, userChoice);
 
-let gameResult = sum % 2 === 0
+function gameResult(userNumber, computerNumber, userChoice) {
+    let sum = userNumber + computerNumber;
 
-function oddOrEven(result) {
+    console.log(sum);
+
     let result;
     if (sum % 2 === 0) {
-        result = "even";
-        alert("hai vinto")
+        console.log("even");
+        if (userChoice === "PARI") {
+            alert("Hai vinto");
+        } else {
+            alert("Hai perso");
+        }
+
     } else {
-        result = "odd";
-        alert("hai perso")
+        console.log("odd");
+        if (userChoice === "DISPARI") {
+            alert("Hai vinto");
+        } else {
+            alert("Hai perso");
+        }
     }
-    return result
+  
 }
 
-
-
-
-
-
-
-// const arrayTest = ["ciao", "salve", "buonasera",]
-// // console.log(arrayTest [0][0]);
-
-// for (let i = 0; i < (arrayTest.length); i++) {
-//     console.log(arrayTest[i][1]);
-// }
+function randomNumber() {
+    const rndNumber = Math.floor(Math.random() * 5) + 1;
+    return rndNumber;
+}
